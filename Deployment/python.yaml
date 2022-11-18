@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: python
+  template:
+    metadata:
+      labels:
+        type: python
+    spec:
+      containers:
+      - name: python
+        image: gcr.io/alaa-368700/app:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENVIRONMENT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: ENVIRONMENT
+        - name: HOST
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: HOST
+        - name: PORT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: PORT
+        - name: REDIS_HOST
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_PORT
+        - name: REDIS_DB
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_DB
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-loadblancer
+spec:
+  type: LoadBalancer
+  selector:
+    type: python
+  ports:
+    - protocol: TCP
+      port: 8000
