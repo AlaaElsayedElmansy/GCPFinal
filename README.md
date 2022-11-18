@@ -1,13 +1,13 @@
-#GCP 
+# GCP 
 
-##Tools I used
+## Tools I used
 
-  ** Docker
-  ** Terraform
-  ** Kubernates
-  ** GCP
+  - ** Docker
+  - ** Terraform
+  - ** Kubernates
+  - ** GCP
 
-###Demo
+### Demo
 
 **you can clone the project
 
