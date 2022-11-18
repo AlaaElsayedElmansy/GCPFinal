@@ -2,10 +2,10 @@
 
 ## Tools I used
 
-  - ** Docker
-  - ** Terraform
-  - ** Kubernates
-  - ** GCP
+  -  Docker
+  -  Terraform
+  -  Kubernates
+  -  GCP
 
 ### Demo
 
